@@ -1,0 +1,132 @@
+
+// $breakpoint: (
+//   mobile : 'screen and (max-width: 500px)',
+//   tablet : 'screen and (max-width: 780px)',
+//   desktop: 'screen and (min-width: 900px)'
+// );
+
+@mixin mediaScreen($bp) {
+  @media #{map-get($breakpoint, $bp)} {
+  @content;
+  }
+}
+
+// @use '~/assets/scss/mixin' as *;
+// これを使いたいページの上部に記載して、
+
+// つかうときはこんなふうに書きます
+// @include mediaScreen('tablet') {
+//   ここにそれぞれの大きさでのCSS;
+// }
+
+// @include mediaScreen('mobile') {
+//   ここにそれぞれの大きさでのCSS;
+// }
+
+@mixin mediaScreen($range) {
+  @if $range == 'smallDevice' {
+    @media all and (width <= 430px) { @content; }
+  } @else if $range == 'mobile' {
+    @media all and (width <= 739px) { @content; }
+  } @else if $range == 'tablet' {
+    @media all and (width <= 979px) { @content; }
+  } @else if $range == 'desktop' {
+    @media all and (980px <= width) { @content; }
+  }
+}
+
+
+
+@mixin textLink($bgColor: 'normal') {
+  display        : inline-block;
+  color          : var(--link-color);
+  fill           : var(--link-color);
+  text-decoration: none;
+  transition     : all .1s;
+  cursor         : pointer;
+
+  @if ($bgColor == 'dark') {
+    color: var(--white);
+    fill : var(--white);
+  }
+}
+
+@mixin container {
+  background-color: var(--white);
+  border          : solid 1px var(--border-color);
+}
+
+@mixin textEllipsis($line: 1) {
+  display: -webkit-box;
+  -webkit-line-clamp: $line;
+  -webkit-box-orient: vertical;  
+  overflow: hidden;
+}
+
+@mixin overflowScrollBarHide() {
+  overflow-x        : auto;
+  scrollbar-width   : none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    display:none;
+  }
+}
+
+
+@mixin price() {
+  display    : inline-flex;
+  flex-wrap  : wrap;
+  font-size  : var(--fs-medium);
+  align-items: baseline;
+
+  &::before {
+    content     : '¥';
+    font-size   : .9em;
+    font-weight : bold;
+  }
+
+  &::after {
+    content    : '(税込)';
+    font-size  : .5em;
+    font-weight: normal;
+  }
+}
+
+@mixin icon($size: calc(var(--bv) * 3), $color: inherit) {
+  width     : 100%;
+  height    : 100%;
+  max-width : $size;
+  max-height: $size;
+  fill      : $color;
+}
+
+@mixin linkList($column: 1) {
+  display      : flex;
+  flex-wrap    : wrap;
+  padding-block: var(--bv);
+
+  > li {
+    flex: 0 0 calc(100% / #{$column});
+
+    > * {
+      display  : block;
+      padding  : calc(var(--bv) * 2);
+      font-size: var(--fs-small);
+    }
+
+    a {
+      &:hover {
+        background-color: var(--hover-color);
+      }
+    }
+  }
+}
+
+@mixin contentsPadding() {
+  padding: var(--sp-large);
+
+  @include mediaScreen('mobile') {
+    padding: var(--sp-medium);
+  }
+}

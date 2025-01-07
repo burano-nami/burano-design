@@ -1,0 +1,72 @@
+@use 'functions' as *;
+
+$maxViewport: 1200;
+$minViewport: 500;
+
+:root {
+  // COLOR
+  --dark-black            : #1C1C1C;
+  --black                 : #333333;
+  --gray                  : #7F8284;
+  --light-gray            : #E8EAEC;
+  --white                 : #ffffff;
+  --gold                  : #DBB785;
+  --logo-green            : #619785;
+  --pale-green            : #E3EEE0;
+  --light-green           : #B7D7AF;
+  --green                 : #87AF8D;
+  --dark-green            : #619785;
+  --pale-pink             : #F9E2D4;
+  --pink                  : #F9AFA2;
+  --red                   : #FF7A72;
+  --base-color            : var(--white);
+  --main-color            : var(--green);
+  --text-color            : var(--dark-black);
+  --button-primary-color  : linear-gradient(267deg, #FBEDD7 0%, #CEA77E 50%, #A16231 100%);
+  --button-instagram-color: linear-gradient(267deg, #F58529 0%, #DD2A7B 33%, #8134AF 67%, #515BD4 100%);
+  --button-line-color     : linear-gradient(267deg, #00C300 0%, #66E066 100%);                            // ボタンはとりあえず色だけ設定、細かいのまだ
+  
+  // FONT
+  --fs-max   : #{calcClamp(24, 32, $minViewport, $maxViewport)};
+  --fs-semi-max: #{calcClamp(22, 26, $minViewport, $maxViewport)};
+  --fs-larger: #{calcClamp(22, 24, $minViewport, $maxViewport)};
+  --fs-large : #{calcClamp(18, 20, $minViewport, $maxViewport)};
+  --fs-medium: #{calcClamp(16, 18, $minViewport, $maxViewport)};
+  --fs-small : #{calcClamp(12, 14, $minViewport, $maxViewport)};
+  --fs-smaller           : #{calcClamp(11, 12, $minViewport, $maxViewport)};
+  --fs-title             : #{calcClamp(34, 64, $minViewport, $maxViewport)};
+  --fs-catchphrase       : #{calcClamp(20, 36, $minViewport, $maxViewport)};
+  --fs-section-title     : #{calcClamp(80, 160, $minViewport, $maxViewport)};
+  --fs-button            : #{calcClamp(14, 16, $minViewport, $maxViewport)};
+  --fs-motif            : #{calcClamp(20, 34, $minViewport, $maxViewport)};
+  --line-height-tight    : 1.12;
+  --line-height-narrow   : 1.4;
+  --line-height-normal   : 1.6;
+  --letter-spacing-wide  : 1em;
+  --letter-spacing-normal: .08em;
+  --letter-spacing-narrow: .04em;
+
+  // VALUE
+  --bv                   : #{calcClamp(6, 8, $minViewport, $maxViewport)};
+  --sp                   : #{calcClamp(6, 8, $minViewport, $maxViewport)};
+  --sp-larger            : calc(var(--sp) * 8);
+  --sp-large             : calc(var(--sp) * 4);
+  --sp-medium            : calc(var(--sp) * 2);
+  --sp-small             : var(--sp);
+  --sp-min               : calc(var(--sp) / 2);
+  --golden-ratio         : 1.618 / 1;
+  --silver-ratio         : 1.414 / 1;
+  --mobile-lower-width   : 430px;
+  --tablet-lower-width   : 740px;
+  --desktop-max-width  : 1440px;
+  --contents-lower-width  : 840px;
+  --contents-max-width   : 1000px;
+  --global-header-height : calc(var(--bv) * 8);
+  --global-sub-nav-height: calc(var(--bv) * 6);
+  --z-index-max          : 100;
+  --z-index-overlay      : 90;
+  --z-index-tooltip      : 80;
+  --z-index-nav          : 70;
+  --z-index-header       : 60;
+  --z-index-contents     : 50;
+}

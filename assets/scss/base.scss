@@ -1,0 +1,154 @@
+@forward 'variables';
+@use 'mixin' as *;
+
+html {
+  -moz-text-size-adjust: none;
+  -webkit-text-size-adjust: none;
+  text-size-adjust: none;
+}
+
+body {
+  min-height           : 100dvh;
+  background-color     : var(--base-color);
+  color                : var(--text-color);
+  font-family          : 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
+  font-size            : var(--fs-medium);
+  font-weight          : 300;
+  line-height          : var(--line-height-normal);
+  letter-spacing       : var(--letter-spacing-normal);
+  word-wrap            : break-word;
+  font-feature-settings: 'palt';
+  leading-trim         : both;
+  text-align           : justify;
+
+  > * {
+    overflow: hidden;
+  }
+  
+}
+
+/* 英語用フォントスタイル */
+:lang(en) {
+  font-family          : 'Cormorant Garamond', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+p {
+  margin : 0;
+  padding: 0;
+}
+
+i {
+  color: var(--text-color);
+}
+
+span,
+small {
+  display: inline-block;
+}
+
+small {
+  font-size: var(--fs-small);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin     : 0;
+  padding    : 0;
+  color      : inherit;
+  font-weight: bold;
+  font-size  : inherit;
+}
+
+ul, ol, li, dl, dt, dd {
+  margin    : 0;
+  padding   : 0;
+  list-style: none;
+
+  &[role='list'] {
+    list-style: none;
+  }
+}
+
+a {
+  @include textLink;
+}
+
+em,
+address {
+  font-style: normal;
+}
+
+img {
+  display   : block;
+  max-width : 100%;
+  max-height: 100%;
+}
+
+fieldset {
+  margin : 0;
+  padding: 0;
+  border : none;
+}
+
+legend {
+  margin : 0;
+  padding: 0;
+}
+
+input,
+option,
+button,
+select {
+  // background-color: transparent;
+  background-color: var(--white);
+  border          : none;
+  outline         : none;
+  color           : var(--text-color);
+  line-height     : var(--line-height-normal);
+  letter-spacing  : var(--letter-spacing-normal);
+  appearance      : auto;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::placeholder {
+    color: #d9d9d9;
+  }
+
+  &[type="date"] {
+    &:focus,
+    &:valid {
+      &::before {
+        display: none;
+      }
+    }
+  }
+}
+
+textarea {
+  outline: none;
+}
+
+button {
+  padding   : 0;
+  border    : none;
+  outline   : none;
+  font      : inherit;
+  color     : inherit;
+  background: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing : 0;
+
+  th,
+  td {
+    text-align    : left;
+    vertical-align: middle;
+  }
+}
+
+::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
