@@ -13,7 +13,7 @@ body {
   color                : var(--text-color);
   font-family          : 'Zen Kaku Gothic New', 'Noto Sans JP', sans-serif;
   font-size            : var(--fs-medium);
-  font-weight          : 300;
+  font-weight          : 400;
   line-height          : var(--line-height-normal);
   letter-spacing       : var(--letter-spacing-normal);
   word-wrap            : break-word;
@@ -29,7 +29,7 @@ body {
 
 /* 英語用フォントスタイル */
 :lang(en) {
-  font-family          : 'Cormorant Garamond', 'Helvetica Neue', 'Arial', sans-serif;
+  font-family          : 'Helvetica Neue', 'Arial', sans-serif;
 }
 
 p {
