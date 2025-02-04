@@ -4,7 +4,31 @@
 
 <template>
   <FadeInContainer>
-    めいん
+    <SectionHero />
+    <!-- <SectionTitle
+      title="aboutme"
+    />
+    <BaseButton 
+      bgColor="var(--orange)"
+    />
+    <SectionTitle
+      title="contact"
+    />
+    <BaseButton
+      bgColor="var(--yellow)"   
+    />
+    <SectionTitle
+      title="myworks"
+    />
+    <BaseButton
+      bgColor="var(--pink)"   
+    />
+    <SectionTitle
+      title="services"
+    />
+    <BaseButton
+      bgColor="var(--green)"   
+    /> -->
   </FadeInContainer>
 </template>
 

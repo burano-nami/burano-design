@@ -4,12 +4,12 @@
 
 <template>
   <main>
-    <!-- <HeaderMenu :class="$style.header"/> -->
+    <HeaderMenu :class="$style.header"/>
     <!-- <HamburgerMenu :class="$style.hamburger_menu"/> -->
     <SectionContainer :class="$style.main_contents">
       <slot />
     </SectionContainer>
-    <div :class="$style.footer" />
+    <FooterMenu :class="$style.footer" />
   </main>
 </template>
 
@@ -17,15 +17,19 @@
 @use '~/assets/scss/mixin' as *;
 main {
   min-block-size: 100vh;
+  block-size    : 100%;
   display       : flex;    /* コンテナ全体をフレックスに */
   flex-direction: column;
 }
 
 .header {
-  position   : fixed;
-  top        : 0;
-  inline-size: 100%;
-  z-index    : var(--z-index-header);
+  position: fixed;
+  top: 0;
+  left: 0;   /* 左端から固定 */
+  right: 0;  /* 右端まで固定 */
+  width: 100%;
+  border-top: 30px solid var(--black);
+  /* background-color: pink; */
 }
 
 .main_contents {
@@ -35,13 +39,7 @@ main {
   /* justify-content: center; */
 }
 
-.footer {
-  inline-size: 100%;
-  block-size : 200px;
-  background : var(--logo-green);
-
-  @include mediaScreen('mobile') {
-    block-size: 100px;
-  }
+.hamburger_menu {
+  z-index: var(--z-index-nav);
 }
 </style>

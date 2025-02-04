@@ -8,6 +8,7 @@
 @use '~/assets/scss/mixin' as *;
 
 .section_container {
+  /* inline-size: 100%; */
   padding-inline: var(--sp-larger);
   /* padding-block: calc(var(--sp-larger) * 2); */
 
