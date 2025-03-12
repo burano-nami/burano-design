@@ -22,10 +22,10 @@
 @use '~/assets/scss/mixin' as *;
 
 .top_container {
-  padding-inline    : var(--sp-larger);
+  padding-inline: var(--sp-larger);
 
   @include mediaScreen('mobile') {
-    padding-inline    :0;
+    padding-inline: var(--sp-large);
   }
 }
 
@@ -38,6 +38,8 @@
   position          : relative;
 
   @include mediaScreen('mobile') {
+    inline-size: 100vw;
+    margin: 0 calc(50% - 50vw);
     justify-content   : center;
     margin-block-start: calc(var(--sp-larger) * 2.5);
   }

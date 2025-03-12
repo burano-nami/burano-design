@@ -15,7 +15,13 @@ const imagePath = computed(() => new URL(`/assets/images/section_title/${props.t
 </template>
 
 <style lang="scss" module>
+@use '~/assets/scss/mixin' as *;
+
 .section_title {
   inline-size: 100%;
+
+  > img {
+    inline-size: 100%;
+  }
 }
 </style>

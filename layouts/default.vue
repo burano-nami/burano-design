@@ -5,10 +5,8 @@
 <template>
   <main>
     <HeaderMenu :class="$style.header"/>
-    <!-- <HamburgerMenu :class="$style.hamburger_menu"/> -->
-    <SectionContainer :class="$style.main_contents">
+    <HamburgerMenu :class="$style.hamburger_menu"/>
       <slot />
-    </SectionContainer>
     <FooterMenu :class="$style.footer" />
   </main>
 </template>
@@ -18,8 +16,6 @@
 main {
   min-block-size: 100vh;
   block-size    : 100%;
-  display       : flex;    /* コンテナ全体をフレックスに */
-  flex-direction: column;
 }
 
 .header {
@@ -41,5 +37,7 @@ main {
 
 .hamburger_menu {
   z-index: var(--z-index-nav);
+  position        : fixed;
+  inset: 0;
 }
 </style>
