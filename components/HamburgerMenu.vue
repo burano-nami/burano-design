@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 const navItems = [
-{ name: 'My works', path: '/#artmake' },
-  { name: 'About me', path: '/#results' },
-  { name: 'Services', path: '/#process' },
-  { name: 'Contact', path: '/#menu' },
+  { name: 'My works', path: '/works' },
+  { name: 'About me', path: '/about' },
+  { name: 'Services', path: '/services' },
+  { name: 'Contact', path: '/contact' },
 ]
 
 const isActive = ref(false)
@@ -34,12 +34,19 @@ const isActive = ref(false)
     </div>
   </div>
     <div
-      :class="$style.btn"
+      :class="$style.btn_open"
       @click="isActive = !isActive"
     >
       <span :class="[$style.btn_bar, isActive ? $style.active : '']"></span>
       <span :class="[$style.btn_bar, isActive ? $style.active : '']"></span>
     </div>
+    <!-- <div
+      :class="$style.btn_close"
+      @click="isActive = !isActive"
+    >
+      <span :class="[$style.btn_bar, isActive ? '' : $style.active]"></span>
+      <span :class="[$style.btn_bar, isActive ? '' : $style.active]"></span>
+    </div> -->
 </template>
 
 <style lang="scss" module>
@@ -124,7 +131,7 @@ const isActive = ref(false)
   }
 }
 
-.btn {
+.btn_open {
   position       : fixed;
   top            : calc(var(--sp-medium)* 4);
   right           : var(--sp-medium);
@@ -137,20 +144,49 @@ const isActive = ref(false)
   z-index        : var(--z-index-overlay);
   display        : none;
 
-  @include mediaScreen('tablet') {
+  @include mediaScreen('mobile') {
     display: flex;
     z-index: var(--z-index-max);
   }
+
+  .btn_bar {
+    inline-size     : 100%;
+    block-size      : 1.5px;
+    background-color: var(--black);
+    border-radius   : 2px;
+
+    &.active {
+      transition: all 0.4s ease-in-out;
+      /* opacity: 0; */
+
+      &:nth-of-type(1) {
+        transform: translateY(4px) rotate(45deg);
+      }
+      &:nth-of-type(2) {
+        transform: translateY(-4px) rotate(-45deg);
+      }
+    }
+  }
 }
 
-.btn_bar {
-  inline-size     : 100%;
-  block-size      : 1.5px;
-  background-color: var(--black);
-  border-radius   : 2px;
+/* .btn_close {
+  position       : fixed;
+  top            : calc(var(--sp-medium)* 4);
+  right           : var(--sp-medium);
+  inline-size    : 40px;
+  block-size     : 10px;
+  display        : none;
+  flex-direction : column;
+  justify-content: space-between;
+  cursor         : pointer;
+  z-index        : var(--z-index-overlay);
+  display        : none;
 
-  &.active {
-    transition: all 0.4s ease-in-out;
+  .btn_bar {
+    inline-size     : 100%;
+    block-size      : 1.5px;
+    background-color: var(--pink);
+    border-radius   : 2px;
 
     &:nth-of-type(1) {
       transform: translateY(4px) rotate(45deg);
@@ -158,6 +194,11 @@ const isActive = ref(false)
     &:nth-of-type(2) {
       transform: translateY(-4px) rotate(-45deg);
     }
+
+    &.active {
+      transition: all 0.4s ease-in-out;
+
+    }
   }
-}
+} */
 </style>

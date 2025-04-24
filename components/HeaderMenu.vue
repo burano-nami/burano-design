@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 const navItems = [
-  { name: 'My works', path: '/#artmake' },
-  { name: 'About me', path: '/#results' },
-  { name: 'Services', path: '/#process' },
-  { name: 'Contact', path: '/#menu' },
+  { name: 'My works', path: '/works' },
+  { name: 'About me', path: '/about' },
+  { name: 'Services', path: '/services' },
+  { name: 'Contact', path: '/contact' },
 ]
 </script>
 

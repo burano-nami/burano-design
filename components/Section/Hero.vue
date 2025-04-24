@@ -22,6 +22,9 @@
 @use '~/assets/scss/mixin' as *;
 
 .top_container {
+  max-inline-size: var(--desktop-max-width);
+  inline-size: 100%;
+  margin-inline: auto;
   padding-inline: var(--sp-larger);
 
   @include mediaScreen('mobile') {

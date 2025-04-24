@@ -3,14 +3,17 @@
 </script>
 
 <template>
-  <SectionContainer :class="$style.works_container">
-    <SectionTitle
-      title="myworks"
-    />
-    <div :class="$style.articles" />
-    <BaseButton 
-      bgColor="var(--pink)"
-    />
+  <SectionContainer>
+    <ContentsContainer :class="$style.works_container">
+      <SectionTitle
+        title="myworks"
+      />
+      <div :class="$style.articles" />
+      <BaseButton 
+        bgColor="var(--pink)"
+        to="/works"
+      />
+    </ContentsContainer>
   </SectionContainer>
 </template>
 

@@ -12,12 +12,11 @@
 
 .footer_container {
   inline-size     : 100%;
-  block-size      : 150px;
+  block-size      : 100px;
   /* background-color: aqua; */
   display         : flex;
   justify-content : center;
   align-items     : center;
-  margin-bottom: var(--sp-large);
 }
 
 </style>

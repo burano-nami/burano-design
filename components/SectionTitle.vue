@@ -18,7 +18,11 @@ const imagePath = computed(() => new URL(`/assets/images/section_title/${props.t
 @use '~/assets/scss/mixin' as *;
 
 .section_title {
-  inline-size: 100%;
+  margin-inline-end: auto;
+
+  @include mediaScreen('mobile') {
+    margin-inline: auto;
+  }
 
   > img {
     inline-size: 100%;

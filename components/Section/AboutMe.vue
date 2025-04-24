@@ -1,17 +1,23 @@
 <script lang="ts" setup>
 
+
 </script>
 
 <template>
-  <SectionContainer :class="$style.about_container">
-    <div :class="$style.title_area">
-      <SectionTitle title="aboutme"/>
-      <div :class="$style.lead">
-        WEBデザイナーとしてのキャリアをスタートして2年目。<br :class="$style.mobile"/>
-        毎日新しいことに挑戦しながら、心を込めたデザインを追求しています。
+  <SectionContainer backgroundImage="/bg/dot.background.png">
+    <ContentsContainer :class="$style.about_container">
+      <div :class="$style.title_area">
+        <SectionTitle title="aboutme"/>
+        <div :class="$style.lead">
+          WEBデザイナーとしてのキャリアをスタートして2年目。<br :class="$style.mobile"/>
+          毎日新しいことに挑戦しながら、心を込めたデザインを追求しています。
+        </div>
       </div>
-    </div>
-    <BaseButton bgColor="var(--orange)"/>
+      <BaseButton 
+        bgColor="var(--orange)"
+        to="/about"
+      />
+    </ContentsContainer>
   </SectionContainer>
 </template>
 
@@ -19,9 +25,8 @@
 @use '~/assets/scss/mixin' as *;
 
 .about_container {
-  inline-size     : 100%;
-  background-image: url('~/assets/images/dot.background.png');
-  background-size : cover;
+  /* background-image: url('~/assets/images/dot.background.png');
+  background-size : cover; */
   display         : flex;
   flex-direction  : row;
   align-items     : center;

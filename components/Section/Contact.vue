@@ -3,14 +3,19 @@
 </script>
 
 <template>
-  <SectionContainer :class="$style.contact_container">
-    <div :class="$style.title_area">
-      <SectionTitle title="contact"/>
-      <div :class="$style.lead">
-        ご質問やお仕事のご依頼、お気軽にお問い合わせください。
+  <SectionContainer backgroundImage="/bg/contact_image.png">
+    <ContentsContainer :class="$style.contact_container">
+      <div :class="$style.title_area">
+        <SectionTitle title="contact"/>
+        <div :class="$style.lead">
+          ご質問やお仕事のご依頼、お気軽にお問い合わせください。
+        </div>
       </div>
-    </div>
-    <BaseButton bgColor="var(--yellow)"/>
+      <BaseButton 
+        bgColor="var(--yellow)"
+        to="/contact"
+      />
+    </ContentsContainer>
   </SectionContainer>
 </template>
 
@@ -18,11 +23,6 @@
 @use '~/assets/scss/mixin' as *;
 
 .contact_container {
-  inline-size        : 100%;
-  background-image   : url('~/assets/images/contact_image.png');
-  background-size    : cover;
-  background-position: center;
-  background-repeat  : no-repeat;
   display            : flex;
   flex-direction     : row;
   align-items        : center;
@@ -43,6 +43,7 @@
   display       : flex;
   flex-direction: column;
   gap           : var(--sp-large);
+  padding       : var(--sp-medium);
 
   @include mediaScreen('mobile') {
     gap             : var(--sp-medium);

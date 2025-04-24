@@ -3,15 +3,20 @@
 </script>
 
 <template>
-  <SectionContainer :class="$style.services_container">
-    <div :class="$style.title_area">
-      <SectionTitle title="services" :class="$style.title"/>
-      <div :class="$style.lead">
-        ご依頼から完成までの流れや料金プランをご紹介します。<br :class="$style.mobile"/>
-        わかりやすく、安心してご依頼いただけるように努めています。
+  <SectionContainer :backgroundColor="'var(--light-gray)'">
+    <ContentsContainer :class="$style.services_container">
+      <div :class="$style.title_area">
+        <SectionTitle title="services" :class="$style.title"/>
+        <div :class="$style.lead">
+          ご依頼から完成までの流れや料金プランをご紹介します。<br :class="$style.mobile"/>
+          わかりやすく、安心してご依頼いただけるように努めています。
+        </div>
       </div>
-    </div>
-    <BaseButton bgColor="var(--green)"/>
+      <BaseButton
+        bgColor="var(--green)"
+        to="/services"
+      />
+    </ContentsContainer>
   </SectionContainer>
 </template>
 
@@ -19,8 +24,6 @@
 @use '~/assets/scss/mixin' as *;
 
 .services_container {
-  inline-size     : 100%;
-  background-color: var(--light-gray);
   padding-block   : calc(var(--sp-larger) * 2.5);
   display         : flex;
   flex-direction  : row;
@@ -40,6 +43,7 @@
   display       : flex;
   flex-direction: column;
   gap           : var(--sp-large);
+  padding       : var(--sp-medium);
 
   @include mediaScreen('mobile') {
     gap           : var(--sp-medium);

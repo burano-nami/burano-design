@@ -16,6 +16,7 @@
 main {
   min-block-size: 100vh;
   block-size    : 100%;
+  position: relative;
 }
 
 .header {
@@ -39,5 +40,13 @@ main {
   z-index: var(--z-index-nav);
   position        : fixed;
   inset: 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;   /* 左端から固定 */
+  right: 0;  /* 右端まで固定 */
+  width: 100%;
 }
 </style>

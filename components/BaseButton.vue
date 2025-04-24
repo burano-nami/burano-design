@@ -2,16 +2,17 @@
 const props = withDefaults(defineProps<{
   bgColor: string
   title?: string
+  to: string
 }>(), {
   title: 'もっとみる' 
 })
 </script>
 
 <template>
-  <button :class="$style.button">
+  <NuxtLink :to="props.to || '#'" :class="$style.button">
     <div :class="$style.background" :style="{ backgroundColor: bgColor }" />
     <span>{{ title }}</span>
-  </button>
+  </NuxtLink>
 </template>
 
 <style lang="scss" module>
