@@ -2,6 +2,9 @@
 const props = defineProps<{
   backgroundImage?: string
   backgroundColor?: string
+  backgroundRepeat?: string
+  backgroundPosition?: string
+  backgroundSize?: string
 }>()
 
 </script>
@@ -13,9 +16,9 @@ const props = defineProps<{
   ...(backgroundImage
     ? {
         backgroundImage: `url(${backgroundImage})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        backgroundSize: 'cover'
+        backgroundRepeat: backgroundRepeat || 'no-repeat',
+        backgroundPosition: backgroundPosition || 'center',
+        backgroundSize: backgroundSize || 'cover'
       }
     : {}),
   ...(backgroundColor ? { backgroundColor } : {})

@@ -4,7 +4,12 @@
 </script>
 
 <template>
-  <SectionContainer backgroundImage="/bg/dot.background.png">
+  <SectionContainer 
+    backgroundImage="/bg/dot.background.png"
+    backgroundRepeat="repeat"
+    backgroundPosition="inherit"
+    backgroundSize="inherit"
+  >
     <ContentsContainer :class="$style.about_container">
       <div :class="$style.title_area">
         <SectionTitle title="aboutme"/>
@@ -25,8 +30,6 @@
 @use '~/assets/scss/mixin' as *;
 
 .about_container {
-  /* background-image: url('~/assets/images/dot.background.png');
-  background-size : cover; */
   display         : flex;
   flex-direction  : row;
   align-items     : center;
