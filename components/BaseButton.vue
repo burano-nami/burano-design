@@ -1,18 +1,27 @@
 <script setup lang="ts">
 const props = withDefaults(defineProps<{
-  bgColor: string
+  to?: string
+  type?: 'submit' | 'button'
+  bgColor?: string
   title?: string
-  to: string
 }>(), {
-  title: 'もっとみる' 
+  title: 'もっとみる',
+  type: 'button'
 })
+
+const isLink = computed(() => !!props.to)
 </script>
 
 <template>
-  <NuxtLink :to="props.to || '#'" :class="$style.button">
-    <div :class="$style.background" :style="{ backgroundColor: bgColor }" />
-    <span>{{ title }}</span>
-  </NuxtLink>
+  <component
+    :is="isLink ? NuxtLink : 'button'"
+    :to="isLink ? props.to : undefined"
+    :type="isLink ? undefined : props.type"
+    :class="$style.button"
+  >
+    <div :class="$style.background" :style="{ backgroundColor: props.bgColor }" />
+    <span>{{ props.title }}</span>
+  </component>
 </template>
 
 <style lang="scss" module>

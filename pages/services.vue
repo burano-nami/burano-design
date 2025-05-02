@@ -13,7 +13,7 @@
       :backgroundColor="'var(--light-gray)'"
     >
       <div :class="$style.services_contents">
-        コンテンツ部分です。
+        準備中です
       </div>
     </SectionContainer>
   </FadeInContainer>
@@ -23,6 +23,7 @@
 @use '~/assets/scss/mixin' as *;
 
 .services_container {
+  block-size: 100%;
   padding-inline: var(--sp-larger);
   padding-block-start: var(--sp-larger);
   padding-block-end: calc(var(--sp-larger) * 4);
@@ -33,6 +34,7 @@
 }
 
 .services_contents {
+  /* min-block-size: 500px; */
   inline-size    : 100%;
   max-inline-size: var( --contents-max-width);
   border-radius  : 10px;
@@ -40,9 +42,5 @@
   background     : var(--white, #FFF);
   padding        : var(--sp-medium);
   margin-inline  : auto;
-
-  @include mediaScreen('tablet') {
-    /* inline-size    : 100%; */
-  }
 }
 </style>

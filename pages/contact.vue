@@ -11,9 +11,11 @@
     <SectionContainer 
       :class="$style.contact_container"
       backgroundImage="/bg/contact_image.png"
+      backgroundPosition="bottom"
+      backgroundSize="100% auto"
     >
       <div :class="$style.contact_contents">
-        コンテンツ部分です。
+        <ContactForm />
       </div>
     </SectionContainer>
   </FadeInContainer>

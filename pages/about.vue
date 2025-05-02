@@ -43,9 +43,5 @@
   background     : var(--white, #FFF);
   padding        : var(--sp-medium);
   margin-inline  : auto;
-
-  @include mediaScreen('tablet') {
-    /* inline-size    : 100%; */
-  }
 }
 </style>

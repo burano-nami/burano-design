@@ -8,7 +8,7 @@
 .fade_container {
   animation: fadeIn .5s backwards;
   opacity  : 1;
-  margin-top    : calc(var(--sp-large) * 8);
+  padding-block-start    : calc(var(--sp-large) * 8);
 }
 
 @keyframes fadeIn {

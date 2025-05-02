@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useWindowSize } from '@vueuse/core'
+
 const props = defineProps<{
   backgroundImage?: string
   backgroundColor?: string
@@ -7,6 +9,17 @@ const props = defineProps<{
   backgroundSize?: string
 }>()
 
+const { width } = useWindowSize()
+
+const computedBackgroundSize = computed(() => {
+  if (!props.backgroundImage) return undefined
+
+  if (width.value <= 740) {
+    return '300% auto'
+  }
+
+  return props.backgroundSize || 'cover'
+})
 </script>
 
 <template>
@@ -18,7 +31,7 @@ const props = defineProps<{
         backgroundImage: `url(${backgroundImage})`,
         backgroundRepeat: backgroundRepeat || 'no-repeat',
         backgroundPosition: backgroundPosition || 'center',
-        backgroundSize: backgroundSize || 'cover'
+        backgroundSize: computedBackgroundSize
       }
     : {}),
   ...(backgroundColor ? { backgroundColor } : {})
