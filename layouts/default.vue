@@ -16,38 +16,37 @@
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
 .layout {
-  display: flex;
+  display       : flex;
   flex-direction: column;
-  min-block-size: 100vh;
-  position: relative;
+  min-height    : 100vh;
+  position      : relative;
 }
 
 .main {
-  flex: 1; // 空いてる高さを埋める
-  display: flex;
+  flex          : 1;       // 残りの高さを埋める
+  display       : flex;
   flex-direction: column;
 }
 
 .header {
-  position: fixed;
-  top: 0;
-  left: 0;   /* 左端から固定 */
-  right: 0;  /* 右端まで固定 */
-  width: 100%;
+  position  : fixed;
+  top       : 0;
+  left      : 0;
+  right     : 0;
+  width     : 100%;
   border-top: 30px solid var(--black);
-
 }
 
 .hamburger_menu {
-  z-index: var(--z-index-nav);
-  position        : fixed;
-  inset: 0;
+  z-index : var(--z-index-nav);
+  position: fixed;
+  inset   : 0;
 }
 
 .footer {
   position: absolute;
-  bottom: 0;
-  left: 0;  
-  right: 0;
+  bottom  : 0;
+  left    : 0;
+  right   : 0;
 }
 </style>

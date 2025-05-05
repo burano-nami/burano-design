@@ -9,16 +9,21 @@ const props = withDefaults(defineProps<{
   type: 'text',
 })
 
+const inputValue = ref('')
 </script>
 
 <template>
   <div :class="$style.input_container">
-    <label for="name">
+    <label :for="name">
       {{ label }}
     </label>
     <input 
+      :id="name"
       :class="$style.input"
-      type="text"
+      :type="type"
+      :name="name"
+      v-model="inputValue"
+      required
     />
   </div>
 </template>

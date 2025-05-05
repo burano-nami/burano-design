@@ -7,15 +7,18 @@
     <p>
       お仕事のご依頼やご相談、ご質問など、なんでもお気軽にお問い合わせお待ちしています。以下のフォームに必要事項をご入力いただき、ご確認のうえ、送信ボタンを押してください。
     </p>
-    <form action="/submit" method="POST">
+    <form 
+      action="https://hyperform.jp/api/8yedqTWp"
+      method="POST"
+    >
       <InputBox
         label="お名前"
-        name="name"
+        name="full_name"
         type="text"
       />
       <InputBox
         label="フリガナ"
-        name="name"
+        name="full_name_kana"
         type="text"
       />
       <InputBox
@@ -27,15 +30,17 @@
         <label for="message">お問い合わせ内容</label>
         <textarea
           :class="$style.textarea"
-        />
+          name="message"
+          required
+        ></textarea>
       </div>
+      <BaseButton
+        bgColor="var(--yellow)"
+        title="送信"
+        :class="$style.submit_button"
+        type="submit"
+      />
     </form>
-    <BaseButton
-      bgColor="var(--yellow)"
-      title="送信"
-      :class="$style.submit_button"
-      type="submit"
-    />
   </div>
 </template>
 

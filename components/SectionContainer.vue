@@ -45,7 +45,8 @@ const computedBackgroundSize = computed(() => {
 @use '~/assets/scss/mixin' as *;
 
 .section_container {
-  padding-inline : var(--sp-larger);
+  flex          : 1;
+  padding-inline: var(--sp-larger);
 
   @include mediaScreen('tablet') {
     padding-inline: var(--sp-large);

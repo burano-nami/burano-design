@@ -4,16 +4,12 @@
 
 <template>
   <FadeInContainer>
-    <SectionTitle
-      title="services"
-      style="padding-inline: var(--sp-larger);"
-    />
-    <SectionContainer 
-      :class="$style.services_container"
-      :backgroundColor="'var(--light-gray)'"
-    >
-      <div :class="$style.services_contents">
-        準備中です
+    <SectionContainer :class="$style.thanks_container">
+      <div :class="$style.thanks_contents">
+        お問い合わせありがとうございます。<br />
+        ご入力いただきました内容を確認の上、<br />
+        追ってご連絡させていただきます。<br />
+        しばらくお待ちください。<br />
       </div>
     </SectionContainer>
   </FadeInContainer>
@@ -22,7 +18,7 @@
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
 
-.services_container {
+.about_container {
   padding-inline     : var(--sp-larger);
   padding-block-start: var(--sp-larger);
   padding-block-end  : calc(var(--sp-larger) * 4);
@@ -32,7 +28,7 @@
   }
 }
 
-.services_contents {
+.thanks_contents {
   inline-size    : 100%;
   max-inline-size: var( --contents-max-width);
   border-radius  : 10px;
