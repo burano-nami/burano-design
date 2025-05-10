@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { NuxtLink } from '#components'
+
 const props = withDefaults(defineProps<{
   to?: string
   type?: 'submit' | 'button'

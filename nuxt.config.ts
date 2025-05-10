@@ -52,6 +52,13 @@ export default defineNuxtConfig({
     },
   },
 
+  runtimeConfig: {
+    public: {
+      microcmsServiceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
+      microcmsApiKey: process.env.MICROCMS_API_KEY
+    }
+  },
+
   css: [
     // '@acab/reset.css',
     'modern-css-reset/dist/reset.min.css',

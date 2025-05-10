@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+import BlogIndex from '~/components/BlogIndex.vue'
 
 </script>
 
@@ -8,7 +9,7 @@
       <SectionTitle
         title="myworks"
       />
-      <div :class="$style.articles" />
+      <blogIndex :class="$style.works_contents"/>
       <BaseButton 
         bgColor="var(--pink)"
         to="/works"

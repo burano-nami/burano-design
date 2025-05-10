@@ -3,7 +3,10 @@
 </script>
 
 <template>
-  <SectionContainer :backgroundColor="'var(--light-gray)'">
+  <SectionContainer 
+    :backgroundColor="'var(--light-gray)'"
+    backgroundSize="cover"
+  >
     <ContentsContainer :class="$style.services_container">
       <div :class="$style.title_area">
         <SectionTitle title="services" :class="$style.title"/>

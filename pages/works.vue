@@ -1,4 +1,5 @@
 <script setup lang="ts">
+  import BlogIndex from '~/components/BlogIndex.vue'
 
 </script>
 
@@ -9,9 +10,7 @@
       style="padding-inline: var(--sp-larger);"
     />
     <SectionContainer :class="$style.works_container">
-      <div :class="$style.works_contents">
-        コンテンツ部分です。
-      </div>
+      <blogIndex :class="$style.works_contents"/>
     </SectionContainer>
   </FadeInContainer>
 </template>
@@ -30,11 +29,7 @@
 }
 
 .works_contents {
-  inline-size    : 100%;
-  max-inline-size: var( --contents-max-width);
-  border-radius  : 10px;
-  border         : 2px solid var(--black, #212121);
-  background     : var(--white, #FFF);
+  inline-size: 100%;
   padding        : var(--sp-medium);
   margin-inline  : auto;
 

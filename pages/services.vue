@@ -38,7 +38,8 @@
   border-radius  : 10px;
   border         : 2px solid var(--black, #212121);
   background     : var(--white, #FFF);
-  padding        : var(--sp-medium);
+  padding-inline : var(--sp-medium);
+  padding-block  : var(--sp-larger);
   margin-inline  : auto;
 }
 </style>
