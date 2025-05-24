@@ -30,6 +30,7 @@
 
 .works_contents {
   inline-size: 100%;
+  max-inline-size: var( --contents-max-width);
   padding        : var(--sp-medium);
   margin-inline  : auto;
 

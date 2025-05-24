@@ -1,20 +1,20 @@
-import { ref } from 'vue'
-import axios from 'axios'
-
-const serviceDomain = useRuntimeConfig().public.microcmsServiceDomain
-const apiKey = useRuntimeConfig().public.microcmsApiKey
+// composables/useBlog.ts
+import type { Blog } from '~/types/blog'
 
 export const useBlog = async () => {
-  const blogs = ref([])
+  const config = useRuntimeConfig()
 
-  const fetchBlogs = async () => {
-    const { data } = await axios.get(`https://${serviceDomain}.microcms.io/api/v1/blogs`, {
-      headers: { 'X-API-KEY': apiKey }
-    })
-    blogs.value = data.contents
-  }
+  const { data } = await useFetch<{ contents: Blog[] }>(
+    `https://${config.public.microcmsServiceDomain}.microcms.io/api/v1/blogs`,
+    {
+      headers: {
+        'X-API-KEY': config.public.microcmsApiKey
+      }
+    }
+  )
 
-  await fetchBlogs()
+  // データがなければ空配列を返す
+  const blogs = computed(() => data.value?.contents || [])
 
   return { blogs }
 }

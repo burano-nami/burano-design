@@ -9,7 +9,11 @@ import BlogIndex from '~/components/BlogIndex.vue'
       <SectionTitle
         title="myworks"
       />
-      <blogIndex :class="$style.works_contents"/>
+      <blogIndex 
+        :class="$style.works_contents"
+        :max="6"
+        :rotate="2"
+      />
       <BaseButton 
         bgColor="var(--pink)"
         to="/works"
@@ -28,11 +32,9 @@ import BlogIndex from '~/components/BlogIndex.vue'
   margin-block  : calc(var(--sp-larger) * 2.5);
 }
 
-.articles {
-  max-inline-size : var(--desktop-max-width);
+.works_contents {
+  max-inline-size: var(--contents-max-width);
   inline-size     : 100%;
-  block-size      : 900px;
-  background-color: var(--light-gray);
   margin-block    : var(--sp-larger);
 }
 </style>
