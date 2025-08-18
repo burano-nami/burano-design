@@ -49,7 +49,7 @@ const visibleBlogs = computed<Blog[]>(() =>
 
 .content {
   background-color: var(--white);
-  background-color: beige;
+  /* background-color: beige; */
   border-radius   : 6px;
   border          : 2px solid var(--black);
   padding         : var(--sp-medium);
@@ -62,6 +62,12 @@ const visibleBlogs = computed<Blog[]>(() =>
   display           : grid;
   grid-template-rows: 80% auto;
   gap               : var(--sp-small);
+  transition: all .3s ease-in-out;
+  transform: scale(1);
+
+  &:hover {
+    transform: scale(1.05);
+  }
 }
 
 

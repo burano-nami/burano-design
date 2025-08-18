@@ -14,41 +14,84 @@ const { data: blog } = await useAsyncData('blog', () =>
 </script>
 
 <template>
-  <SectionContainer :class="$style.article_container">
-    <div 
-      :class="$style.contents_container"
-      v-if="blog"
-    >
-      <!-- <h1>{{ blog.title }}</h1> -->
-      <div
-        :class="$style.contents"
-        v-html="blog.content"
-      />
-    </div>
-    <p v-else>読み込み中...</p>
-    <p v-if="!blog">記事が見つかりませんでした。</p>
-    <NuxtLink
-        to="/works"
-        :class="$style.back_button"
-    >
-      記事一覧にもどる
-    </NuxtLink>
-  </SectionContainer>
+  <FadeInContainer>
+    <SectionTitle
+      title="myworks"
+      style="padding-inline: var(--sp-larger);"
+    />
+    <SectionContainer :class="$style.article_container">
+      <div 
+        :class="$style.contents_container"
+        v-if="blog"
+      >
+        <!-- <h1>{{ blog.title }}</h1> -->
+        <div
+          :class="$style.contents"
+          v-html="blog.content"
+        />
+      </div>
+      <p v-else>読み込み中...</p>
+      <p v-if="!blog">記事が見つかりませんでした。</p>
+      <NuxtLink
+          to="/works"
+          :class="$style.back_button"
+      >
+      View all Works
+      </NuxtLink>
+    </SectionContainer>
+  </FadeInContainer>
 </template>
 
 <style lang="scss" module>
+@use '~/assets/scss/mixin' as *;
+
+.article_container {
+  display            : flex;
+  flex-direction     : column;
+  align-items        : center;
+  padding-inline     : var(--sp-larger);
+  padding-block-start: var(--sp-larger);
+  padding-block-end  : calc(var(--sp-larger) * 4);
+
+  @include mediaScreen('mobile') {
+    padding-inline: var(--sp-large);
+  }
+}
 
 .contents_container {
+  inline-size    : 100%;
+  max-inline-size: var( --contents-max-width);
+  padding        : var(--sp-large);
   border-radius: 10px;
   border: 2px solid var(--black);
   background: var(--white);
 }
 
 .back_button {
-  inline-size: 100%;
-  text-align: center;
-  margin-block-start: var(--sp-larger);
-  margin-block-end: calc(var(--sp-larger) * 4);
+  margin-block: var(--sp-larger);
+  position    : relative;
+
+    &:hover::before {
+      content                  : '';
+      inline-size              : 100%;
+      height                   : 1px;
+      background-color         : var(--black);
+      position                 : absolute;
+      bottom                   : -5px;
+      animation-name           : hoverAnime;
+      animation-duration       : 0.2s;
+      animation-timing-function: ease;
+      animation-fill-mode      : forwards;
+  }
+}
+
+@keyframes hoverAnime {
+  0% {
+    inline-size: 0;
+  }
+  100% {
+    inline-size: 100%;
+  }
 }
 
 .contents {

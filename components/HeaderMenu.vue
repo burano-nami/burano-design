@@ -47,6 +47,7 @@ const navItems = [
   align-items     : center;
   padding         : var(--sp-small) var(--sp-large);
   z-index         : var(--z-index-header);
+  background-color: rgba(255, 255, 255, 0.5);
 }
 
 .logo {
