@@ -80,6 +80,10 @@ const navItems = [
     color      : var(--black);
     display    : flex;
     gap        : var(--sp-large);
+
+    &:hover {
+      color: var(--yellow);
+    }
   }
 }
 

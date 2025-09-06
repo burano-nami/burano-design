@@ -7,6 +7,7 @@ const navItems = [
 ]
 
 const isActive = ref(false)
+
 </script>
 
 <template>
@@ -65,7 +66,8 @@ const isActive = ref(false)
   top            : 0;
   z-index        : var(--z-index-overlay);
   pointer-events : none;
-  padding-block  : calc(var(--sp-large) * 2);
+  flex-direction: column;
+
 
   &.active {
     opacity       : 1;
@@ -76,13 +78,11 @@ const isActive = ref(false)
 .contents_inner {
   inline-size        : 100%;
   block-size         : 100%;
-  margin-inline      : var(--sp-large);
   background-color   : var(--dark-gray);
-  border-radius      : 10px;
   display            : flex;
   flex-direction     : column;
   align-items        : center;
-  padding-block-start: calc(var(--sp-larger) * 2.5);
+  justify-content: center;
 
   .logo {
     font-family: "ADAM.CG PRO";
@@ -157,7 +157,7 @@ const isActive = ref(false)
 
     &.active {
       transition: all 0.4s ease-in-out;
-      /* opacity: 0; */
+      background-color: var(--white);
 
       &:nth-of-type(1) {
         transform: translateY(4px) rotate(45deg);

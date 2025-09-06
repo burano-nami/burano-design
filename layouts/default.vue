@@ -20,6 +20,8 @@
   flex-direction: column;
   min-height    : 100vh;
   position      : relative;
+  overflow: hidden;       /* 背景スクロール停止 */
+  touch-action: none;
 }
 
 .main {
