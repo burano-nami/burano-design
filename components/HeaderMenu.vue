@@ -8,13 +8,8 @@ const navItems = [
 </script>
 
 <template>
-  <div
-    :class="$style.header_container"
-  >
-    <NuxtLink
-      to="/"
-      :class="$style.logo"
-      >
+  <div  :class="$style.header_container">
+    <NuxtLink to="/">
       <div :class="$style.logo">
         BURANO<br>DESIGN
       </div>
@@ -45,19 +40,19 @@ const navItems = [
   display         : flex;
   justify-content : space-between;
   align-items     : center;
-  padding         : var(--sp-small) var(--sp-large);
-  z-index         : var(--z-index-header);
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: var(--white);
+  border-top      : 10px solid var(--black);
+  padding         : var(--sp-small) var(--sp-larger);
 }
 
 .logo {
   font-family: var(--title-fonts);
-  font-size  : 24px;
+  font-size  : 16px;
   font-weight: 600;
   line-height: 1.2;
+  transition: opacity 0.4s ease, transform 0.4s ease;
 
   @include mediaScreen('tablet') {
-    opacity: 0;
     pointer-events: none;
   }
 }
@@ -80,37 +75,12 @@ const navItems = [
     color      : var(--black);
     display    : flex;
     gap        : var(--sp-large);
+    transform: scale(1);
+    transition: transform 0.3s ease;
 
     &:hover {
-      color: var(--yellow);
+      transform: scale(1.08);
     }
-  }
-}
-
-.menu {
-  position   : relative;
-  inline-size: 100%;
-
-  &:hover::before {
-    content                  : '';
-    inline-size              : 100%;
-    height                   : 1px;
-    background-color         : var(--black);
-    position                 : absolute;
-    bottom                   : -5px;
-    animation-name           : hoverAnime;
-    animation-duration       : 0.2s;
-    animation-timing-function: ease;
-    animation-fill-mode      : forwards;
-  }
-}
-
-@keyframes hoverAnime {
-  0% {
-    inline-size: 0;
-  }
-  100% {
-    inline-size: 100%;
   }
 }
 </style>

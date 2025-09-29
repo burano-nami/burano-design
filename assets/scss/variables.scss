@@ -23,7 +23,7 @@ $minViewport: 500;
   
   // FONT
   // --fs-max               : #{calcClamp(24, 32, $minViewport, $maxViewport)};
-  // --fs-semi-max          : #{calcClamp(22, 26, $minViewport, $maxViewport)};
+  --fs-semi-max          : #{calcClamp(22, 26, $minViewport, $maxViewport)};
   --fs-larger            : #{calcClamp(18, 20, $minViewport, $maxViewport)};
   --fs-large             : #{calcClamp(16, 18, $minViewport, $maxViewport)};
   --fs-medium            : #{calcClamp(14, 16, $minViewport, $maxViewport)};

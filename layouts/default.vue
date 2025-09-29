@@ -1,11 +1,30 @@
 <script lang="ts" setup>
+const isFixed = ref(false)
+const triggerRef = ref<HTMLElement | null>(null)
 
+onMounted(() => {
+  if (!triggerRef.value) return
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      isFixed.value = !entry.isIntersecting
+    },
+    { threshold: [0] }
+  )
+
+  observer.observe(triggerRef.value)
+  onUnmounted(() => observer.disconnect())
+})
 </script>
 
 <template>
   <div :class="$style.layout">
-    <HeaderMenu :class="$style.header" />
-    <HamburgerMenu :class="$style.hamburger_menu" />
+    <div ref="triggerRef" style="height: 1px;"></div>
+    <div  :class="[$style.header_wrapper, isFixed ? $style.fixed : '']">
+      <HamburgerMenu :class="$style.hamburger_menu"/>
+      <HeaderMenu :class="$style.header_menu"
+      />
+    </div>
     <main :class="$style.main">
       <slot />
     </main>
@@ -20,8 +39,9 @@
   flex-direction: column;
   min-height    : 100vh;
   position      : relative;
-  overflow: hidden;       /* 背景スクロール停止 */
+  /* overflow: hidden;     */
   touch-action: none;
+  border-top: 30px solid var(--black);
 }
 
 .main {
@@ -30,25 +50,41 @@
   flex-direction: column;
 }
 
-.header {
-  position  : fixed;
-  top       : 0;
-  left      : 0;
-  right     : 0;
-  width     : 100%;
-  border-top: 30px solid var(--black);
-}
-
-.hamburger_menu {
-  z-index : var(--z-index-nav);
-  position: fixed;
-  inset   : 0;
-}
-
 .footer {
   position: absolute;
   bottom  : 0;
   left    : 0;
   right   : 0;
+}
+
+.header_wrapper {
+  margin-top: calc(var(--sp-larger) * -1);
+  transition: opacity 0.4s ease, background-color 0.4s ease;
+  z-index   : var(--z-index-nav);
+  opacity   : 0;
+}
+
+.fixed {
+  position: fixed;
+  top     : var(--sp-larger);
+  left    : 0;
+  right   : 0;
+  opacity : 1;                 // 半透明でおしゃれに
+}
+
+.hamburger_menu {
+  display: none;
+
+  @include mediaScreen('tablet') {
+    display: block;
+  }
+}
+
+.header_menu {
+  display: flex;
+  
+  @include mediaScreen('tablet') {
+    display: none;
+  }
 }
 </style>

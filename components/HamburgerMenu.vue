@@ -11,48 +11,60 @@ const isActive = ref(false)
 </script>
 
 <template>
-  <div :class="[$style.menu_list, isActive ? $style.active : '']">
-    <div :class="$style.contents_inner">
-      <NuxtLink
-        to="/"
-        :class="$style.logo"
-        @click="isActive = false"
-      >
-      BURANODESIGN
-      </NuxtLink>
-      <span></span>
-      <ul>
+  <div>
+    <div :class="[$style.menu_list, isActive ? $style.active : '']">
+      <div :class="$style.image">
+        <img src="/assets/images/top_image.png" alt="">
+      </div>
+      <ul :class="$style.contents_inner">
         <li
           v-for="item in navItems.filter(item => item.name !== 'HOME')"
           :key="item.name"
           @click="isActive = false"
         >
           <NuxtLink :to="item.path">
-            {{ item.name }}
+            {{ item.name }}<span>.</span>
           </NuxtLink>
         </li>
       </ul>
     </div>
-  </div>
-    <div
-      :class="$style.btn_open"
-      @click="isActive = !isActive"
-    >
-      <span :class="[$style.btn_bar, isActive ? $style.active : '']"></span>
-      <span :class="[$style.btn_bar, isActive ? $style.active : '']"></span>
+    <div :class="$style.hamburger_container">
+      <NuxtLink  to="/">
+        <div :class="$style.logo">
+          BURANO<br>DESIGN
+        </div>
+      </NuxtLink>
+      <div
+        :class="$style.btn_open"
+        @click="isActive = !isActive"
+      >
+        <span :class="[$style.btn_bar, isActive ? $style.active : '']"></span>
+        <span :class="[$style.btn_bar, isActive ? $style.active : '']"></span>
+      </div>
     </div>
-    <!-- <div
-      :class="$style.btn_close"
-      @click="isActive = !isActive"
-    >
-      <span :class="[$style.btn_bar, isActive ? '' : $style.active]"></span>
-      <span :class="[$style.btn_bar, isActive ? '' : $style.active]"></span>
-    </div> -->
+  </div>
 </template>
 
 <style lang="scss" module>
 @use '~/assets/scss/mixin' as *;
 
+.hamburger_container {
+  inline-size     : 100%;
+  padding         : var(--sp-small) var(--sp-large);
+  background-color: var(--white);
+  border-top      : 10px solid var(--black);
+  position        : relative;                         // ← 基準にする
+}
+
+.logo {
+  font-family: var(--title-fonts);
+  font-size  : 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* シャッターになるメニュー */
 .menu_list {
   display        : flex;
   inline-size    : 100%;
@@ -60,29 +72,28 @@ const isActive = ref(false)
   color          : var(--black);
   justify-content: center;
   align-items    : center;
-  opacity        : 0;
-  transition     : opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-  position       : fixed;
-  top            : 0;
-  z-index        : var(--z-index-overlay);
+  justify-content: space-evenly;
+  position       : absolute; // ← fixedではなくabsoluteに
+  top            : 100%; // ← hamburger_containerのすぐ下からスタート
+  left           : 0;
+  transform      : translateY(-100%); // ← 上に隠れている
+  transition     : transform 0.6s cubic-bezier(0.77, 0, 0.175, 1);
   pointer-events : none;
-  flex-direction: column;
-
+  flex-direction : column;
+  background-color   : var(--white);
 
   &.active {
-    opacity       : 1;
+    transform: translateY(0);
     pointer-events: all;
   }
 }
 
 .contents_inner {
   inline-size        : 100%;
-  block-size         : 100%;
-  background-color   : var(--dark-gray);
   display            : flex;
   flex-direction     : column;
-  align-items        : center;
-  justify-content: center;
+  align-items        : flex-start;
+  padding-inline: var(--sp-larger);
 
   .logo {
     font-family: "ADAM.CG PRO";
@@ -90,63 +101,46 @@ const isActive = ref(false)
     color      : var(--white);
   }
 
-  span {
-    width             : 260px;
-    height            : 10px;
-    background-color  : var(--black);
-    margin-block-start: var(--sp-min);
-    margin-block-end  : var(--sp-large);
-  }
 
   li {
   list-style : none;
-  font-size  : 36px;
-  color      : var(--white);
+  font-size  : var(--fs-semi-max);
   font-weight: bold;
   cursor     : pointer;
   display    : flex;
   align-items: baseline;
   margin-bottom: var(--sp-medium);
 
-    &::before {
-      content          : "";
-      display          : inline-block;
-      inline-size      : 5px;
-      block-size       : 28px;
-      background-color : var(--pink);
-      margin-inline-end: 10px;
+    span {
+      color: var(--pink);
     }
 
-    &:nth-child(1)::before {
-      background-color: var(--orange);
+    &:nth-child(1) span {
+      color: var(--orange);
     }
-
-    &:nth-child(2)::before {
-      background-color: var(--green);
+    &:nth-child(2) span {
+      color: var(--green);
     }
-
-    &:nth-child(3)::before {
-      background-color: var(--yellow);
+    &:nth-child(3) span {
+      color: var(--yellow);
     }
   }
 }
 
 .btn_open {
-  position       : fixed;
-  top            : calc(var(--sp-medium)* 4);
-  right           : var(--sp-medium);
-  inline-size    : 40px;
-  block-size     : 10px;
-  display        : none;
-  flex-direction : column;
+  position: absolute;
+  top: 50%;
+  right: var(--sp-large);
+  transform: translateY(-50%);
+  inline-size: 30px;
+  block-size: 10px;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
-  cursor         : pointer;
-  z-index        : var(--z-index-overlay);
-  display        : none;
+  cursor: pointer;
 
   @include mediaScreen('mobile') {
     display: flex;
-    z-index: var(--z-index-max);
   }
 
   .btn_bar {
@@ -157,7 +151,6 @@ const isActive = ref(false)
 
     &.active {
       transition: all 0.4s ease-in-out;
-      background-color: var(--white);
 
       &:nth-of-type(1) {
         transform: translateY(4px) rotate(45deg);
@@ -169,36 +162,33 @@ const isActive = ref(false)
   }
 }
 
-/* .btn_close {
-  position       : fixed;
-  top            : calc(var(--sp-medium)* 4);
-  right           : var(--sp-medium);
-  inline-size    : 40px;
-  block-size     : 10px;
-  display        : none;
-  flex-direction : column;
-  justify-content: space-between;
-  cursor         : pointer;
-  z-index        : var(--z-index-overlay);
-  display        : none;
+.image_container {
+  inline-size       : max(100%, 450px);
+  block-size        : 100%;
+  margin-block-start: var(--sp-larger);
+  display           : flex;
+  justify-content   : flex-end;
+  position          : relative;
 
-  .btn_bar {
-    inline-size     : 100%;
-    block-size      : 1.5px;
-    background-color: var(--pink);
-    border-radius   : 2px;
-
-    &:nth-of-type(1) {
-      transform: translateY(4px) rotate(45deg);
-    }
-    &:nth-of-type(2) {
-      transform: translateY(-4px) rotate(-45deg);
-    }
-
-    &.active {
-      transition: all 0.4s ease-in-out;
-
-    }
+  @include mediaScreen('mobile') {
+    inline-size: 100vw;
+    margin: 0 calc(50% - 50vw);
+    justify-content   : center;
+    margin-block-start: calc(var(--sp-larger) * 2.5);
   }
-} */
+}
+
+.image {
+  inline-size    : 100%;
+  max-inline-size: 970px;
+  transform      : rotate(-2deg);
+  z-index        : -1;
+  mix-blend-mode: luminosity;
+
+  
+  > img {
+    inline-size: 100%;
+    border     : 2px solid var(--black);
+  }
+}
 </style>
