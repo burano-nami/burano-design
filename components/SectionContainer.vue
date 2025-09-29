@@ -9,17 +9,6 @@ const props = defineProps<{
   backgroundSize?: string
 }>()
 
-const { width } = useWindowSize()
-
-const computedBackgroundSize = computed(() => {
-  if (!props.backgroundImage) return undefined
-
-  if (width.value <= 740) {
-    return '300% auto'
-  }
-
-  return props.backgroundSize || 'cover'
-})
 </script>
 
 <template>
@@ -31,7 +20,7 @@ const computedBackgroundSize = computed(() => {
         backgroundImage: `url(${backgroundImage})`,
         backgroundRepeat: backgroundRepeat || 'no-repeat',
         backgroundPosition: backgroundPosition || 'center',
-        backgroundSize: computedBackgroundSize
+        backgroundSize:  backgroundSize || 'cover',
       }
     : {}),
   ...(backgroundColor ? { backgroundColor } : {})

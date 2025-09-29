@@ -1,10 +1,11 @@
 <script setup lang="ts">
 const props = defineProps<{
-  max?: number
-  rotate?: number 
+  max: number
+  // rotate?: number 
 }>()
 
 const { blogs } = await useBlog()
+const rotateIndex = computed(() => props.max - 1)
 
 import type { Blog } from '~/types/blog'
 
@@ -20,7 +21,7 @@ const visibleBlogs = computed<Blog[]>(() =>
       v-for="(blog, index) in visibleBlogs"
       :key="blog.id"
       :style="{
-        transform: props.rotate && index === 5 ? `rotate(${props.rotate}deg)` : 'none'
+        transform: index === rotateIndex ? 'rotate(2deg)' : 'none'
       }"
     >
       <NuxtLink 

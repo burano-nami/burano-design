@@ -1,8 +1,17 @@
 <script lang="ts" setup>
 const isFixed = ref(false)
 const triggerRef = ref<HTMLElement | null>(null)
+  const route = useRoute() 
+
 
 onMounted(() => {
+  // 👇 トップページ(index)のときだけ IntersectionObserver を使う
+  if (route.path !== '/') {
+    // トップページ以外では最初から固定
+    isFixed.value = true
+    return
+  }
+
   if (!triggerRef.value) return
 
   const observer = new IntersectionObserver(
@@ -39,9 +48,8 @@ onMounted(() => {
   flex-direction: column;
   min-height    : 100vh;
   position      : relative;
-  /* overflow: hidden;     */
-  touch-action: none;
-  border-top: 30px solid var(--black);
+  touch-action  : none;
+  border-top    : 30px solid var(--black);
 }
 
 .main {

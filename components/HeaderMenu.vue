@@ -47,7 +47,7 @@ const navItems = [
 
 .logo {
   font-family: var(--title-fonts);
-  font-size  : 16px;
+  font-size  : 24px;
   font-weight: 600;
   line-height: 1.2;
   transition: opacity 0.4s ease, transform 0.4s ease;

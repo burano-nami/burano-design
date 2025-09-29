@@ -1,6 +1,18 @@
 <script lang="ts" setup>
 import BlogIndex from '~/components/BlogIndex.vue'
 
+const maxItems = ref(6) // デフォルトはPC用
+
+onMounted(() => {
+  const mq = window.matchMedia('(max-width: 739px)') // ← スマホ判定
+  const handleChange = (e: MediaQueryListEvent | MediaQueryList) => {
+    maxItems.value = e.matches ? 3 : 6
+  }
+
+  handleChange(mq) // 初期化時にも一度実行
+  mq.addEventListener('change', handleChange)
+  onUnmounted(() => mq.removeEventListener('change', handleChange))
+})
 </script>
 
 <template>
@@ -11,8 +23,7 @@ import BlogIndex from '~/components/BlogIndex.vue'
       />
       <blogIndex 
         :class="$style.works_contents"
-        :max="6"
-        :rotate="2"
+        :max="maxItems"
       />
       <BaseButton 
         bgColor="var(--pink)"

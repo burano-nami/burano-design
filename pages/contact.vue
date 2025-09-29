@@ -12,7 +12,7 @@
       :class="$style.contact_container"
       backgroundImage="/bg/contact_image.png"
       backgroundPosition="bottom"
-      backgroundSize="100% auto"
+      backgroundSize="cover"
     >
       <div :class="$style.contact_contents">
         <ContactForm />
