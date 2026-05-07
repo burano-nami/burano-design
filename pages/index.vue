@@ -7,7 +7,7 @@
     <SectionHero />
     <SectionMyWorks />
     <SectionAboutMe />
-    <SectionServices />
+    <!-- <SectionServices /> -->
     <SectionContact />
   <!-- </FadeInContainer> -->
   </div>

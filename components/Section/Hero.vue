@@ -13,7 +13,7 @@
       <h1>
         <img src="/assets/images/section_title/main_title.svg" alt="burano design" />
       </h1>
-      <P>小さな一歩を形にした、<br :class="$style.mobile">わたしのポートフォリオサイト</P>
+      <P>わたしのポートフォリオサイト</P>
     </div>
   </div>
 </template>

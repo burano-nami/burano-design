@@ -14,8 +14,8 @@
       <div :class="$style.title_area">
         <SectionTitle title="aboutme"/>
         <div :class="$style.lead">
-          WEBデザイナーとしてのキャリアをスタートして2年目。<br :class="$style.mobile"/>
-          毎日新しいことに挑戦しながら、心を込めたデザインを追求しています。
+          Webデザイナー・フロントエンドエンジニアとして2年目。<br :class="$style.mobile"/>
+          HTML / CSS / Vue.js / Reactを用いたWeb制作を中心に学習・実装を行っています。
         </div>
       </div>
       <BaseButton 

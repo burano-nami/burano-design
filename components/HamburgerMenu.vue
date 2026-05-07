@@ -2,7 +2,7 @@
 const navItems = [
   { name: 'My works', path: '/works' },
   { name: 'About me', path: '/about' },
-  { name: 'Services', path: '/services' },
+  // { name: 'Services', path: '/services' },
   { name: 'Contact', path: '/contact' },
 ]
 
@@ -115,11 +115,11 @@ const isActive = ref(false)
       color: var(--pink);
     }
 
-    &:nth-child(1) span {
-      color: var(--orange);
-    }
+    // &:nth-child(1) span {
+    //   color: var(--orange);
+    // }
     &:nth-child(2) span {
-      color: var(--green);
+      color: var(--orange);
     }
     &:nth-child(3) span {
       color: var(--yellow);

@@ -8,7 +8,7 @@
       <div :class="$style.title_area">
         <SectionTitle title="contact"/>
         <div :class="$style.lead">
-          ご質問やお仕事のご依頼、お気軽にお問い合わせください。
+          ご連絡はお気軽にお送りください。
         </div>
       </div>
       <BaseButton 

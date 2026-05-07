@@ -7,7 +7,7 @@ const props = withDefaults(defineProps<{
   bgColor?: string
   title?: string
 }>(), {
-  title: 'もっとみる',
+  title: 'CLICK',
   type: 'button'
 })
 

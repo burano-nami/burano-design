@@ -2,7 +2,7 @@
 const navItems = [
   { name: 'My works', path: '/works' },
   { name: 'About me', path: '/about' },
-  { name: 'Services', path: '/services' },
+  // { name: 'Services', path: '/services' },
   { name: 'Contact', path: '/contact' },
 ]
 </script>
@@ -65,7 +65,7 @@ const navItems = [
 
 .list {
   display: flex;
-  gap    : calc(var(--sp-medium) * 1.5);
+  gap    : calc(var(--sp-medium) * 2);
 
   @include mediaScreen('tablet') {
     display: none;

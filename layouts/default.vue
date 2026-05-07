@@ -1,20 +1,27 @@
 <script lang="ts" setup>
 const isFixed = ref(false)
 const triggerRef = ref<HTMLElement | null>(null)
-  const route = useRoute() 
+  const route = useRoute()
 
 
-onMounted(() => {
-  // 👇 トップページ(index)のときだけ IntersectionObserver を使う
+let observer: IntersectionObserver | null = null
+
+const setupObserver = () => {
+  if (observer) {
+    observer.disconnect()
+    observer = null
+  }
+
   if (route.path !== '/') {
-    // トップページ以外では最初から固定
     isFixed.value = true
     return
   }
 
+  isFixed.value = false
+
   if (!triggerRef.value) return
 
-  const observer = new IntersectionObserver(
+  observer = new IntersectionObserver(
     ([entry]) => {
       isFixed.value = !entry.isIntersecting
     },
@@ -22,8 +29,11 @@ onMounted(() => {
   )
 
   observer.observe(triggerRef.value)
-  onUnmounted(() => observer.disconnect())
-})
+}
+
+onMounted(() => setupObserver())
+watch(() => route.path, () => setupObserver())
+onUnmounted(() => observer?.disconnect())
 </script>
 
 <template>
@@ -77,8 +87,9 @@ onMounted(() => {
   top     : var(--sp-larger);
   left    : 0;
   right   : 0;
-  opacity : 1;                 // 半透明でおしゃれに
+  opacity : 1;
 }
+
 
 .hamburger_menu {
   display: none;
