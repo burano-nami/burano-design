@@ -1,6 +1,4 @@
 export default defineNuxtConfig({
-  ssr: false,
-
   // pages: false,
 
   app: {
