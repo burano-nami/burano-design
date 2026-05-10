@@ -3,7 +3,7 @@ const props = defineProps<{
   title: string
 }>()
 
-const imagePath = computed(() => new URL(`/assets/images/section_title/${props.title}.svg`, import.meta.url).href)
+const imagePath = computed(() => `/images/section_title/${props.title}.svg`)
 </script>
 
 <template>
